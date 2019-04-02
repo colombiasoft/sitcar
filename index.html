@@ -241,15 +241,37 @@ numeroalcomunicamre=arrayfiremisdatos.numcelular;
 
 }
 var retona="";
-function llamandroid(){
-// enviarsms  "gpsdlng"  "gps"
+function llamandroid(){ 
+// enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
 	retona=  Android.showToast("gpsdlat","st1","st2","st3");
 }
 
 
 function llamagpsandrodi(){
-// enviarsms  "gpsdlng"  "gps"
+// enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
 	retona=  Android.showToast("gps","st1","st2","st3");
+	escribeh3todo(retona);
+	
+setTimeout(function (){
+
+	llamandroidporlatylng();
+	
+},5000);
+	
+}
+var vmilat="0";
+var vmilng="0";
+function llamandroidporlatylng(){
+
+	// enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
+	retona=  Android.showToast("gpsdlat","st1","st2","st3");
+	retona=retona+" lat <-> lng "+  Android.showToast("gpsdlng","st1","st2","st3");
+	retona=retona+" llamadas al gps  "+  Android.showToast("cuantasllamadasgpsvan","st1","st2","st3");
+	escribeh3todo(retona);
+}
+
+function recibedelandroidgps(){
+	escribeh3todo(retona);
 }
 
 function traerllamaagpsandroid(){
@@ -259,7 +281,7 @@ function traerllamaagpsandroid(){
 
 
 
-		escribeh3todo(snapshot.val());
+		
 document.getElementById("todo").style.backgroundColor ="#000000";
 
 llamagpsandrodi();
