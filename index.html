@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+
+
+#todo{
+
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(255, 255, 255);
+	z-index: 1;
+}
+
+#idlogin{
+
+	position: absolute;top: 30%;
+	height: 40%;
+	left: 10%;
+	width: 80%;
+	background-color: rgb(0, 0, 0);
+
+	border: 5px solid #1C6EA4;
+border-radius: 40px 39px 40px 40px;
+opacity: 0.7;
+}
+#idlabeluser{
+
+	position: absolute;
+	top: 10%;
+	left: 5%;
+	width: 90%;
+	font-size: 13px;
+	color: rgb(0, 0, 0);
+}
+
+#iduser{
+
+position: absolute;
+top: 20%;
+left: 5%;
+width: 90%;
+font-size: 13px;
+color: rgb(0, 0, 0);
+}
+
+
+#idlabelpass{
+
+position: absolute;
+top: 50%;
+left: 5%;
+width: 90%;
+font-size: 13px;
+color: rgb(0, 0, 0);
+}
+#idpass{
+
+position: absolute;
+top: 60%;
+left: 5%;
+width: 90%;
+font-size: 13px;
+color: rgb(0, 0, 0);
+}
+
+#idbtok{
+
+position: absolute;
+top: 85%;
+left: 30%;
+width: 40%;
+height: 30px;
+font-size: 13px;
+color: rgb(0, 0, 0);
+
+background-color: rgb(255, 255, 255)
+}
+
+#idh3{
+
+	position: absolute;
+	top: -50%;
+	height: 12%;
+	font-size: 14px;
+	color: #1C6EA4;
+	left: 0%;
+	width: 100%;
+	padding: 2px;
+	margin: auto;
+	text-align: center;
+}
+
+
+#idh3todo{
+
+position: absolute;
+top: 10%;
+height: 12%;
+font-size: 14px;
+color: rgb(255, 255, 255);
+left: 0%;
+width: 100%;
+padding: 2px;
+margin: auto;
+text-align: center;
+}
+
+
+
+		</style>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBmOO5WzNtKRtWzoo2jalCToYMfc01mkJY",
+    authDomain: "sitcar-33718.firebaseapp.com",
+    databaseURL: "https://sitcar-33718.firebaseio.com",
+    projectId: "sitcar-33718",
+    storageBucket: "sitcar-33718.appspot.com",
+    messagingSenderId: "531952806781"
+  };
+  firebase.initializeApp(config);
+</script>
+	</head>
+	<body>
+
+        <div id="todo">
+				<h3 id="idh3todo"></h3>
+<div id="idlogin">
+
+	<h3 id="idh3">LOGIN</h3>
+     <label id="idlabeluser" for="">user:</label>
+	<input id="iduser" placeholder="user" type="text">
+
+	<label id="idlabelpass" for="">pass:</label>	
+	<input id="idpass" placeholder="pass" type="text">
+	<button onclick="fidbtok();" id="idbtok">ok</button>
+
+</div>
+
+        </div>
+		<script src=""></script>
+		<script>
+traedefirmisdatos();
+traedefirecarros();
+var vuserfire="";
+var vpassfire="";
+var objfireuser;
+var arrayfirecarros=[];
+var arrayfiremisdatos=[];
+
+var  numeroalcomunicamre="";
+var  emailacomunciarme="";
+
+var bolestoylogeado=false;
+function fidbtok(){
+
+	vuserfire=document.getElementById("iduser").value;
+	vpassfire=document.getElementById("idpass").value;
+
+
+	for(var i in arrayfirecarros.carros){
+
+if(arrayfirecarros.carros[i].pass==vpassfire&&arrayfirecarros.carros[i].user==vuserfire){
+	bolestoylogeado=true;
+objfireuser=arrayfirecarros.carros[i];
+
+
+
+}
+
+	}
+
+	if(bolestoylogeado){
+		document.getElementById("idlogin").style.display="none";
+		//escribeh3("Logeado "+ bolestoylogeado);
+
+		traerllamaagpsandroid();
+
+
+	}else{
+	//	escribeh3("no esta  registrado comunicate al "+ bolestoylogeado);
+	
+	}
+}
+
+function  escribeh3(st){
+
+	document.getElementById("idh3").innerHTML=st+" "+"<br>" + numeroalcomunicamre+" y "+emailacomunciarme;
+}
+
+
+function  escribeh3todo(st){
+
+document.getElementById("idh3todo").innerHTML=st;
+}
+
+
+
+
+
+
+
+
+
+function traedefirecarros(){
+
+
+	firebase.database().ref().child("sitcar").once('value', function(snapshot) {
+arrayfirecarros=snapshot.val();
+
+
+
+
+});
+
+}
+function traedefirmisdatos(){
+
+
+	firebase.database().ref().child("misdatos").once('value', function(snapshot) {
+arrayfiremisdatos=snapshot.val();
+
+
+
+
+emailacomunciarme=arrayfiremisdatos.email;
+ingenieromisdatos=arrayfiremisdatos.ingeniero;
+numeroalcomunicamre=arrayfiremisdatos.numcelular;
+
+
+
+});
+
+}
+var retona="";
+function llamandroid(){
+// enviarsms  "gpsdlng"  "gps"
+	retona=  Android.showToast("gpsdlat","st1","st2","st3");
+}
+
+
+function llamagpsandrodi(){
+// enviarsms  "gpsdlng"  "gps"
+	retona=  Android.showToast("gps","st1","st2","st3");
+}
+
+function traerllamaagpsandroid(){
+	
+
+	firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfire).child("llamaagpsandroid").on('value', function(snapshot) {
+
+
+
+		escribeh3todo(snapshot.val());
+document.getElementById("todo").style.backgroundColor ="#000000";
+
+llamagpsandrodi();
+
+});
+
+
+
+
+
+}
+
+			// Our Javascript will go here.
+		</script>
+	</body>
+</html>
