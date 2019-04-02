@@ -289,6 +289,20 @@ llamagpsandrodi();
 });
 
 
+
+
+firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfire).child("celparaenviarsms").on('value', function(snapshot) {
+
+
+escribeh3todo(snapshot.val());
+		
+celularaenviarmsn=String(snapshot.val());
+retona=  Android.showToast("celularaenviamsn",celularaenviarmsn,"st2","st3");
+
+});
+
+
+
 firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfire).child("llamadaenviarsmsami").on('value', function(snapshot) {
 
 
@@ -300,9 +314,29 @@ escribeh3todo(snapshot.val());
 });
 
 
+
+
+
+
+firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfire).child("emailparaenviar").on('value', function(snapshot) {
+
+
+	emailaenviarmensaje=snapshot.val();
+		
+	enviaremail();
+
+
+});
+
+
+
+
+
+
+
 }
-
-
+var emailaenviarmensaje="";
+var celularaenviarmsn=0;
 function llamadallamadaenviarsmsami(){
 
 	Android.showToast("enviarsms","st1","st2","st3");
@@ -310,6 +344,15 @@ function llamadallamadaenviarsmsami(){
 
 
 }
+
+function enviaremail(){
+
+	Android.showToast("email","st1","st2","st3");
+
+
+
+}
+
 
 			// Our Javascript will go here.
 		</script>
