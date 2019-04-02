@@ -289,6 +289,23 @@ llamagpsandrodi();
 });
 
 
+firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfire).child("llamadaenviarsmsami").on('value', function(snapshot) {
+
+
+
+		
+
+	llamadallamadaenviarsmsami();
+
+});
+
+
+}
+
+
+function llamadallamadaenviarsmsami(){
+
+	Android.showToast("enviarsms","st1","st2","st3");
 
 
 
