@@ -289,7 +289,7 @@ vmilat= Android.showToast("gpsdlat","st1","st2","st3");
 	retona=retona+" lat <-> lng "+  Android.showToast("gpsdlng","st1","st2","st3");
 	retona=retona+" llamadas al gps  "+  Android.showToast("cuantasllamadasgpsvan","st1","st2","st3");
 
-
+	traelinks();
 
 	firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("lat").set(vmilat);
 	firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("lng").set(vmilng);
@@ -298,11 +298,16 @@ vmilat= Android.showToast("gpsdlat","st1","st2","st3");
 
 
 
+	firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("linkmiwe").set(vlinkmweb);
+	firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("linkgmap").set(vlinkgoglemap);
+	//child(String(vhoy)).child(vhoras+vminut).push({lat:vmilat,lng:vmilng});
 
 
 
 
-	escribeh3todo(retona);
+
+
+	escribeh3todo(vlinkmweb);
 }
 
 
@@ -473,8 +478,23 @@ function  ciclodeldiagps(){
 
 
 	llamagpsandrodiciclo()
-	setTimeout("ciclodeldiagps()",7000)
-}
+	setTimeout("ciclodeldiagps()",3600000)
+}//3600000
+
+
+var vlinkmweb="";
+var vlinkgoglemap="";
+
+function  traelinks(){
+
+	vlinkmweb=	Android.showToast("linkmiweb","st1","st2","st3");
+	vlinkgoglemap=Android.showToast("linkmgogolemap","st1","st2","st3");
+
+
+//firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("historicoslatlng").
+//firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("historicoslatlng").
+
+}//3600000
 
 
 
