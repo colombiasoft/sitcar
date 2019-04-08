@@ -184,7 +184,8 @@ objfireuser=arrayfirecarros.carros[i];
 
 		traerllamaagpsandroid();
 
-		mostrarhora();
+		//mostrarhora()
+		ciclodeldiagps()
 	}else{
 	//	escribeh3("no esta  registrado comunicate al "+ bolestoylogeado);
 	
@@ -243,7 +244,7 @@ numeroalcomunicamre=arrayfiremisdatos.numcelular;
 var retona="";
 function llamandroid(){ 
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-	//retona=  Android.showToast("gpsdlat","st1","st2","st3");
+	retona=  Android.showToast("gpsdlat","st1","st2","st3");
 }
 
 
@@ -354,7 +355,7 @@ firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfi
 escribeh3todo(snapshot.val());
 		
 celularaenviarmsn=String(snapshot.val());
-//retona=  Android.showToast("celularaenviamsn",celularaenviarmsn,"st2","st3");
+retona=  Android.showToast("celularaenviamsn",celularaenviarmsn,"st2","st3");
 
 });
 
@@ -404,7 +405,7 @@ function llamadallamadaenviarsmsami(){
 
 function enviaremail(){
 
-//	Android.showToast("email","st1","st2","st3");
+	Android.showToast("email","st1","st2","st3");
 
 
 
@@ -448,7 +449,7 @@ if(mm<10) {
 
 //hoy = mm+'/'+dd+'/'+yyyy;
 
- vhoy=yyyy+mm+dd;
+ vhoy=String(yyyy+mm+dd);
 escribeh3(vhoy+" ho  "+vhoras+vminut+"  ");
 subefirelatylngmes()
 
@@ -463,7 +464,7 @@ subefirelatylngmes()
 
 function subefirelatylngmes(){
 	firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("historicoslatlng").
-	child(String(vhoy)).child(vhoras+vminut).push({lat:vmilat,lng:vmilng});
+	child(vhoy).push({lat:vmilat,lng:vmilng,fecha:vhoy+vhoras+vminut});
 
 }
 
@@ -472,7 +473,7 @@ function  ciclodeldiagps(){
 
 
 	llamagpsandrodiciclo()
-	setTimeout("ciclodeldiagps()",5000)
+	setTimeout("ciclodeldiagps()",7000)
 }
 
 
