@@ -242,15 +242,15 @@ numeroalcomunicamre=arrayfiremisdatos.numcelular;
 
 }
 var retona="";
-function llamandroid(){ 
+function llamandroid(id,st1,st2,st3){ 
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-	retona=  Android.showToast("gpsdlat","st1","st2","st3");
+	llamandroid(id,st1,st2,st3);
 }
 
 
 function llamagpsandrodi(){
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-	retona=  Android.showToast("gps","st1","st2","st3");
+	llamandroid("gps","st1","st2","st3");
 	escribeh3todo(retona);
 	
 setTimeout(function (){
@@ -263,7 +263,7 @@ setTimeout(function (){
 
 function llamagpsandrodiciclo(){
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-	retona=  Android.showToast("gps","st1","st2","st3");
+	llamandroid("gps","st1","st2","st3");
 	escribeh3todo(retona);
 	
 setTimeout(function (){
@@ -283,7 +283,7 @@ var vmilng="0";
 function llamandroidporlatylng(){
 
 	// enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-	retona=  Android.showToast("gpsdlat","st1","st2","st3");
+	llamandroid("gpsdlat","st1","st2","st3");
 vmilng=Android.showToast("gpsdlng","st1","st2","st3");
 vmilat= Android.showToast("gpsdlat","st1","st2","st3");
 	retona=retona+" lat <-> lng "+  Android.showToast("gpsdlng","st1","st2","st3");
@@ -317,7 +317,7 @@ vmilat= Android.showToast("gpsdlat","st1","st2","st3");
 function llamandroidporlatylngciclo(){
 
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-retona=  Android.showToast("gpsdlat","st1","st2","st3");
+llamandroid("gpsdlat","st1","st2","st3");
 vmilng=Android.showToast("gpsdlng","st1","st2","st3");
 vmilat= Android.showToast("gpsdlat","st1","st2","st3");
 retona=retona+" lat <-> lng "+  Android.showToast("gpsdlng","st1","st2","st3");
@@ -360,7 +360,7 @@ firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfi
 escribeh3todo(snapshot.val());
 		
 celularaenviarmsn=String(snapshot.val());
-retona=  Android.showToast("celularaenviamsn",celularaenviarmsn,"st2","st3");
+llamandroid("celularaenviamsn",celularaenviarmsn,"st2","st3");
 
 });
 
@@ -494,9 +494,7 @@ function  traelinks(){
 //firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("historicoslatlng").
 //firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("historicoslatlng").
 
-}//3600000
-
-
+}//360000
 
 			// Our Javascript will go here.
 		</script>
