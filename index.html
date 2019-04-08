@@ -160,17 +160,6 @@ var  numeroalcomunicamre="";
 var  emailacomunciarme="";
 
 var bolestoylogeado=false;
-
-
-
-
-
-
-
-function estellaaandroid(id,st1,st2,st3){
-
-	retona	=	estellaaandroid(id,st1,st2,st3);
-}
 function fidbtok(){
 
 	vuserfire=document.getElementById("iduser").value;
@@ -255,15 +244,13 @@ numeroalcomunicamre=arrayfiremisdatos.numcelular;
 var retona="";
 function llamandroid(){ 
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-//		estellaaandroid("gpsdlat","st1","st2","st3");
+	retona=  Android.showToast("gpsdlat","st1","st2","st3");
 }
 
 
 function llamagpsandrodi(){
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-	//	estellaaandroid("gps","st1","st2","st3");
-
-	estellaaandroid("gps","st1","st2","st3");;
+	retona=  Android.showToast("gps","st1","st2","st3");
 	escribeh3todo(retona);
 	
 setTimeout(function (){
@@ -276,7 +263,7 @@ setTimeout(function (){
 
 function llamagpsandrodiciclo(){
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-estellaaandroid("gps","st1","st2","st3");
+	retona=  Android.showToast("gps","st1","st2","st3");
 	escribeh3todo(retona);
 	
 setTimeout(function (){
@@ -296,11 +283,11 @@ var vmilng="0";
 function llamandroidporlatylng(){
 
 	// enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-	//	estellaaandroid("gpsdlat","st1","st2","st3");
-vmilng=	estellaaandroid("gpsdlng","st1","st2","st3");
-vmilat= 	estellaaandroid("gpsdlat","st1","st2","st3");
-	retona=retona+" lat <-> lng  unavez  "+  	estellaaandroid("gpsdlng","st1","st2","st3");
-	retona=retona+" llamadas al gps  "+  	estellaaandroid("cuantasllamadasgpsvan","st1","st2","st3");
+	retona=  Android.showToast("gpsdlat","st1","st2","st3");
+vmilng=Android.showToast("gpsdlng","st1","st2","st3");
+vmilat= Android.showToast("gpsdlat","st1","st2","st3");
+	retona=retona+" lat <-> lng "+  Android.showToast("gpsdlng","st1","st2","st3");
+	retona=retona+" llamadas al gps  "+  Android.showToast("cuantasllamadasgpsvan","st1","st2","st3");
 
 	traelinks();
 
@@ -330,11 +317,11 @@ vmilat= 	estellaaandroid("gpsdlat","st1","st2","st3");
 function llamandroidporlatylngciclo(){
 
 // enviarsms  "gpsdlng"  "gps" cuantasllamadasgpsvan
-//	estellaaandroid("gpsdlat","st1","st2","st3");
-vmilng=	estellaaandroid("gpsdlng","st1","st2","st3");
-vmilat= 	estellaaandroid("gpsdlat","st1","st2","st3");
-retona=retona+" lat <-> lng "+  	estellaaandroid("gpsdlng","st1","st2","st3");
-retona=retona+" llamadas al gps  "+  	estellaaandroid("cuantasllamadasgpsvan","st1","st2","st3");
+retona=  Android.showToast("gpsdlat","st1","st2","st3");
+vmilng=Android.showToast("gpsdlng","st1","st2","st3");
+vmilat= Android.showToast("gpsdlat","st1","st2","st3");
+retona=retona+" lat <-> lng "+  Android.showToast("gpsdlng","st1","st2","st3");
+retona=retona+" llamadas al gps  "+  Android.showToast("cuantasllamadasgpsvan","st1","st2","st3");
 
 
 mostrarhora();
@@ -353,7 +340,7 @@ var historicolatylng;
 function traerllamaagpsandroid(){
 	
 
-firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfire).child("llamaagpsandroid").on('value', function(snapshot) {
+	firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfire).child("llamaagpsandroid").on('value', function(snapshot) {
 
 
 
@@ -373,7 +360,7 @@ firebase.database().ref().child("sitcar").child("carros").child(objfireuser.idfi
 escribeh3todo(snapshot.val());
 		
 celularaenviarmsn=String(snapshot.val());
-	estellaaandroid("celularaenviamsn",celularaenviarmsn,"st2","st3");
+retona=  Android.showToast("celularaenviamsn",celularaenviarmsn,"st2","st3");
 
 });
 
@@ -415,7 +402,7 @@ var emailaenviarmensaje="";
 var celularaenviarmsn=0;
 function llamadallamadaenviarsmsami(){
 
-		estellaaandroid("enviarsms","st1","st2","st3");
+	Android.showToast("enviarsms","st1","st2","st3");
 
 
 
@@ -423,7 +410,7 @@ function llamadallamadaenviarsmsami(){
 
 function enviaremail(){
 
-		estellaaandroid("email","st1","st2","st3");
+	Android.showToast("email","st1","st2","st3");
 
 
 
@@ -469,7 +456,7 @@ if(mm<10) {
 
  vhoy=String(yyyy+mm+dd);
 escribeh3(vhoy+" ho  "+vhoras+vminut+"  ");
-subefirelatylngmes();
+subefirelatylngmes()
 
 //cuantashistoricossubdiasva=cuantashistoricossubdiasva+1;
 //setTimeout("mostrarhora()",5000); //3600000
@@ -484,18 +471,14 @@ function subefirelatylngmes(){
 	firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("historicoslatlng").
 	child(vhoy).push({lat:vmilat,lng:vmilng,fecha:vhoy+vhoras+vminut});
 
-
-	firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("lng").set(vmilng);
-	firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("lat").set(vmilat);
-
 }
 
 
 function  ciclodeldiagps(){
 
 
-	llamagpsandrodiciclo();
-	setTimeout("ciclodeldiagps()",10000);
+	llamagpsandrodiciclo()
+	setTimeout("ciclodeldiagps()",3600000)
 }//3600000
 
 
@@ -504,8 +487,8 @@ var vlinkgoglemap="";
 
 function  traelinks(){
 
-	vlinkmweb=		estellaaandroid("linkmiweb","st1","st2","st3");
-	vlinkgoglemap=	estellaaandroid("linkmgogolemap","st1","st2","st3");
+	vlinkmweb=	Android.showToast("linkmiweb","st1","st2","st3");
+	vlinkgoglemap=Android.showToast("linkmgogolemap","st1","st2","st3");
 
 
 //firebase.database().ref().child("sitcar").child("carros").child(String(objfireuser.idfire)).child("historicoslatlng").
